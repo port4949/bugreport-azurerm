@@ -71,7 +71,7 @@ resource "azurerm_app_service" "app-bugreport" {
     use_32_bit_worker_process = true
   }
 
-  /*
+/*
   identity {
     type = "SystemAssigned"
   }
@@ -84,8 +84,8 @@ resource "azurerm_app_service" "app-bugreport" {
 }
 
 /*
-resource "azurerm_key_vault_access_policy" "example" {
-  key_vault_id = azurerm_key_vault.example.id
+resource "azurerm_key_vault_access_policy" "policy-bugreport-app" {
+  key_vault_id = azurerm_key_vault.kv-bugreport.id
   tenant_id    = azurerm_app_service.app-bugreport.identity[0].tenant_id
   object_id    = azurerm_app_service.app-bugreport.identity[0].principal_id
 
