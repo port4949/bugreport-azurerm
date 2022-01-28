@@ -79,7 +79,7 @@ resource "azurerm_app_service" "app-bugreport" {
   identity {
     type = "SystemAssigned"
   }
-*/
+  */
 
   app_settings = {
     NORMAL            = "This is not a secret",
@@ -95,6 +95,10 @@ resource "azurerm_key_vault_access_policy" "policy-bugreport-app" {
 
   secret_permissions = [
     "Get",
+  ]
+
+  depends_on = [
+    azurerm_app_service.app-bugreport,
   ]
 }
 */
