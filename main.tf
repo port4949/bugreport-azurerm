@@ -57,6 +57,10 @@ resource "azurerm_key_vault_secret" "secret-bugreport" {
   name         = "secret-sauce"
   value        = "szechuan"
   key_vault_id = azurerm_key_vault.kv-bugreport.id
+
+  depends_on = [
+    azurerm_key_vault_access_policy.policy-bugreport,
+  ]
 }
 
 resource "azurerm_app_service" "app-bugreport" {
@@ -71,7 +75,7 @@ resource "azurerm_app_service" "app-bugreport" {
     use_32_bit_worker_process = true
   }
 
-/*
+  /*
   identity {
     type = "SystemAssigned"
   }
